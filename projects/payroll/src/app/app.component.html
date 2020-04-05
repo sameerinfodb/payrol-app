@@ -1,0 +1,324 @@
+
+<style>
+  :host {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+    font-size: 14px;
+    color: #333;
+    box-sizing: border-box;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    margin: 8px 0;
+  }
+
+  p {
+    margin: 0;
+  }
+
+  .spacer {
+    flex: 1;
+  }
+
+  .toolbar {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 60px;
+    display: flex;
+    align-items: center;
+    background-color: #1976d2;
+    color: white;
+    font-weight: 600;
+  }
+
+  .toolbar img {
+    margin: 0 16px;
+  }
+
+  .toolbar #twitter-logo {
+    height: 40px;
+    margin: 0 16px;
+  }
+
+  .toolbar #twitter-logo:hover {
+    opacity: 0.8;
+  }
+
+  .content {
+    display: flex;
+    margin: 82px auto 32px;
+    padding: 0 16px;
+    max-width: 960px;
+    flex-direction: column;
+    align-items: center;
+  }
+
+  svg.material-icons {
+    height: 24px;
+    width: auto;
+  }
+
+  svg.material-icons:not(:last-child) {
+    margin-right: 8px;
+  }
+
+  .card svg.material-icons path {
+    fill: #888;
+  }
+
+  .card-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    margin-top: 16px;
+  }
+
+  .card {
+    border-radius: 4px;
+    border: 1px solid #eee;
+    background-color: #fafafa;
+    height: 40px;
+    width: 200px;
+    margin: 0 8px 16px;
+    padding: 16px;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    transition: all 0.2s ease-in-out;
+    line-height: 24px;
+  }
+
+  .card-container .card:not(:last-child) {
+    margin-right: 0;
+  }
+
+  .card.card-small {
+    height: 16px;
+    width: 168px;
+  }
+
+  .card-container .card:not(.highlight-card) {
+    cursor: pointer;
+  }
+
+  .card-container .card:not(.highlight-card):hover {
+    transform: translateY(-3px);
+    box-shadow: 0 4px 17px rgba(black, 0.35);
+  }
+
+  .card-container .card:not(.highlight-card):hover .material-icons path {
+    fill: rgb(105, 103, 103);
+  }
+
+  .card.highlight-card {
+    background-color: #1976d2;
+    color: white;
+    font-weight: 600;
+    border: none;
+    width: auto;
+    min-width: 30%;
+    position: relative;
+  }
+
+  .card.card.highlight-card span {
+    margin-left: 60px;
+  }
+
+  svg#rocket {
+    width: 80px;
+    position: absolute;
+    left: -10px;
+    top: -24px;
+  }
+
+  svg#rocket-smoke {
+    height: calc(100vh - 95px);
+    position: absolute;
+    top: 10px;
+    right: 180px;
+    z-index: -10;
+  }
+
+  a,
+  a:visited,
+  a:hover {
+    color: #1976d2;
+    text-decoration: none;
+  }
+
+  a:hover {
+    color: #125699;
+  }
+
+  .terminal {
+    position: relative;
+    width: 80%;
+    max-width: 600px;
+    border-radius: 6px;
+    padding-top: 45px;
+    margin-top: 8px;
+    overflow: hidden;
+    background-color: rgb(15, 15, 16);
+  }
+
+  .terminal::before {
+    content: "\2022 \2022 \2022";
+    position: absolute;
+    top: 0;
+    left: 0;
+    height: 4px;
+    background: rgb(58, 58, 58);
+    color: #c2c3c4;
+    width: 100%;
+    font-size: 2rem;
+    line-height: 0;
+    padding: 14px 0;
+    text-indent: 4px;
+  }
+
+  .terminal pre {
+    font-family: SFMono-Regular,Consolas,Liberation Mono,Menlo,monospace;
+    color: white;
+    padding: 0 1rem 1rem;
+    margin: 0;
+  }
+
+  .circle-link {
+    height: 40px;
+    width: 40px;
+    border-radius: 40px;
+    margin: 8px;
+    background-color: white;
+    border: 1px solid #eeeeee;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    cursor: pointer;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.24);
+    transition: 1s ease-out;
+  }
+
+  .circle-link:hover {
+    transform: translateY(-0.25rem);
+    box-shadow: 0px 3px 15px rgba(0, 0, 0, 0.2);
+  }
+
+  footer {
+    margin-top: 8px;
+    display: flex;
+    align-items: center;
+    line-height: 20px;
+  }
+
+  footer a {
+    display: flex;
+    align-items: center;
+  }
+
+  .github-star-badge {
+    color: #24292e;
+    display: flex;
+    align-items: center;
+    font-size: 12px;
+    padding: 3px 10px;
+    border: 1px solid rgba(27,31,35,.2);
+    border-radius: 3px;
+    background-image: linear-gradient(-180deg,#fafbfc,#eff3f6 90%);
+    margin-left: 4px;
+    font-weight: 600;
+    font-family: -apple-system,BlinkMacSystemFont,Segoe UI,Helvetica,Arial,sans-serif,Apple Color Emoji,Segoe UI Emoji,Segoe UI Symbol;
+  }
+
+  .github-star-badge:hover {
+    background-image: linear-gradient(-180deg,#f0f3f6,#e6ebf1 90%);
+    border-color: rgba(27,31,35,.35);
+    background-position: -.5em;
+  }
+
+  .github-star-badge .material-icons {
+    height: 16px;
+    width: 16px;
+    margin-right: 4px;
+  }
+
+  svg#clouds {
+    position: fixed;
+    bottom: -160px;
+    left: -230px;
+    z-index: -10;
+    width: 1920px;
+  }
+
+
+  /* Responsive Styles */
+  @media screen and (max-width: 767px) {
+
+    .card-container > *:not(.circle-link) ,
+    .terminal {
+      width: 100%;
+    }
+
+    .card:not(.highlight-card) {
+      height: 16px;
+      margin: 8px 0;
+    }
+
+    .card.highlight-card span {
+      margin-left: 72px;
+    }
+
+    svg#rocket-smoke {
+      right: 120px;
+      transform: rotate(-5deg);
+    }
+  }
+
+  @media screen and (max-width: 575px) {
+    svg#rocket-smoke {
+      display: none;
+      visibility: hidden;
+    }
+  }
+</style>
+
+<!-- Toolbar -->
+<div class="toolbar" role="banner">
+  <img
+    width="40"
+    alt="Payroll"
+    src="data:image/svg+xml;utf8;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIGRhdGEtbmFtZT0iTGF5ZXIgMSIgdmlld0JveD0iMCAwIDUxMiA1MTIiPjxnIGRhdGEtbmFtZT0iJmx0O0dyb3VwJmd0OyI+PGcgZGF0YS1uYW1lPSIgR3JvdXAgIj48ZyBkYXRhLW5hbWU9IiZsdDtHcm91cCZndDsiPjxnIGRhdGEtbmFtZT0iJmx0O0dyb3VwJmd0OyI+PGcgZGF0YS1uYW1lPSImbHQ7R3JvdXAmZ3Q7Ij48cGF0aCBmaWxsPSIjZmRjNzViIiBkPSJNNDM4Ljk2LDQ5Ljg0VjM5My42NmMwLDQtNS4yNiw2LjA4LTguNTEsMy4zN2wtMzMuNzMtMjguMTRhNS40NCw1LjQ0LDAsMCwwLTEuMTktLjczaC0uMTNWOTMuNGMwLTE1LjE5LTEzLjYyLTI3LjUxLTMwLjQyLTI3LjUxSDE2MC4xNlY0OS44NGMwLTE1LjE5LDEzLjYxLTI3LjUxLDMwLjQxLTI3LjUxSDQwOC41NEM0MjUuMzQsMjIuMzMsNDM4Ljk2LDM0LjY1LDQzOC45Niw0OS44NFoiIGRhdGEtbmFtZT0iJmx0O1BhdGgmZ3Q7Ii8+PC9nPjxnIGRhdGEtbmFtZT0iJmx0O0dyb3VwJmd0OyI+PHBhdGggZmlsbD0iI2VkNjY0YyIgZD0iTTE2MC4xNiw2NS44OUgzNjQuOThjMTYuOCwwLDMwLjQyLDEyLjMyLDMwLjQyLDI3LjUxVjQzNy4yMmMwLDMuOTktNS4yNiw2LjA4LTguNTEsMy4zN2wtMzMuNzMtMjguMTRhNS41NjcsNS41NjcsMCwwLDAtMS4zMi0uNzlWMTM2Ljk2YzAtMTUuMTktMTMuNjItMjcuNTEtMzAuNDEtMjcuNTFIMTE2LjZWOTMuNGMwLTE1LjE5LDEzLjYyLTI3LjUxLDMwLjQyLTI3LjUxWiIgZGF0YS1uYW1lPSImbHQ7UGF0aCZndDsiLz48L2c+PGcgZGF0YS1uYW1lPSImbHQ7R3JvdXAmZ3Q7Ij48cGF0aCBmaWxsPSIjZmRjNzViIiBkPSJNMzUxLjg0LDQxMS42NnY2OS4xMWMwLDQtNS4yNiw2LjA4LTguNSwzLjM4TDMwOS42LDQ1Ni4wMWE1LjQ3MSw1LjQ3MSwwLDAsMC02LjgxLS4wNUwyNjIuNDcsNDg4LjVhNS40NjgsNS40NjgsMCwwLDEtNi43Ny0uMDJsLTM5Ljg2LTMyLjUyYTUuNDU2LDUuNDU2LDAsMCwwLTYuNzksMGwtMzkuODYsMzIuNTJhNS40ODIsNS40ODIsMCwwLDEtNi43OC4wMkwxMjIuMSw0NTUuOTZhNS40ODUsNS40ODUsMCwwLDAtNi44Mi4wNUw4MS41NSw0ODQuMTVjLTMuMjUsMi43LTguNTEuNjItOC41MS0zLjM4VjEzNi45NmMwLTE1LjE5LDEzLjYyLTI3LjUxLDMwLjQyLTI3LjUxSDMyMS40M2MxNi43OSwwLDMwLjQxLDEyLjMyLDMwLjQxLDI3LjUxWiIgZGF0YS1uYW1lPSImbHQ7UGF0aCZndDsiLz48L2c+PC9nPjxnIGRhdGEtbmFtZT0iJmx0O0dyb3VwJmd0OyI+PHBhdGggZD0iTTcyLjM0OSw0OTIuMDgxYTEzLjUwNiwxMy41MDYsMCwwLDAsMTQuMzE2LTEuNzg4bDMyLjA3OC0yNi43NTgsMzguNjQsMzEuMTljLjAyOS4wMjQuMDYuMDQ3LjA5LjA3MWExMy40NDksMTMuNDQ5LDAsMCwwLDE2LjY3MS0uMDM1bC4xLS4wODIsMzguMi0zMS4xNjQsMzguMiwzMS4xNjQuMDg3LjA3YTEzLjQyOCwxMy40MjgsMCwwLDAsMTYuNjc2LjA0N2wuMDg4LS4wNywzOC42NDMtMzEuMTg3TDMzOC4yMTksNDkwLjNhMTMuNiwxMy42LDAsMCwwLDE0LjM2MywxLjc5MUExMi41MzIsMTIuNTMyLDAsMCwwLDM2MCw0ODAuNzdWNDI4LjQ0MmwyMS44NDcsMTguMjkyYTEzLjI0NSwxMy4yNDUsMCwwLDAsOC41MTUsMy4wNzIsMTIuNTg0LDEyLjU4NCwwLDAsMCw1LjUxOS0xLjI3NUExMi4yNDYsMTIuMjQ2LDAsMCwwLDQwMyw0MzcuMjJWMzg0Ljg4MWwyMi4xMjYsMTguMjkzYTEzLjYzMywxMy42MzMsMCwwLDAsOC42NiwzLjA3NSwxMy44MzUsMTMuODM1LDAsMCwwLDUuODA3LTEuMjc1QTEyLjUxOCwxMi41MTgsMCwwLDAsNDQ3LDM5My42NlY0OS44NEM0NDcsMzAuMjYsNDI5LjcyNSwxNCw0MDguNTQsMTRIMTkwLjU3QzE2OS4zOTEsMTQsMTUyLDMwLjI2LDE1Miw0OS44NFY1OGgtNC45OEMxMjUuODM1LDU4LDEwOSw3My44MiwxMDksOTMuNFYxMDFoLTUuNTRDODIuMjc1LDEwMSw2NSwxMTcuMzgsNjUsMTM2Ljk2VjQ4MC43N0ExMi40NzQsMTIuNDc0LDAsMCwwLDcyLjM0OSw0OTIuMDgxWk0xNjgsNDkuODRDMTY4LDM5LjA4MiwxNzguMjEzLDMwLDE5MC41NywzMEg0MDguNTRDNDIwLjksMzAsNDMxLDM5LjA4Miw0MzEsNDkuODR2MzM3LjJsLTI4LTIyLjk5M1Y5My40QzQwMyw3My44MiwzODYuMTY1LDU4LDM2NC45OCw1OEgxNjhaTTEyNSw5My40YzAtMTAuNzU4LDkuNjU4LTE5LjQsMjIuMDItMTkuNEgzNjQuOThDMzc3LjM0Miw3NCwzODcsODIuNjQyLDM4Nyw5My40VjQzMC42bC0yNy0yMi45OTJWMTM2Ljk2YzAtMTkuNTgtMTcuMzkxLTM1Ljk2LTM4LjU3LTM1Ljk2SDEyNVpNODEsMTM2Ljk2QzgxLDEyNi4yLDkxLjEsMTE3LDEwMy40NiwxMTdIMzIxLjQzYzEyLjM1NywwLDIyLjU3LDkuMiwyMi41NywxOS45NlY0NzQuMTVsLTI5LjItMjQuMjg0Yy0uMDMyLS4wMjctLjEtLjA1My0uMTM3LS4wNzlhMTMuNDQ1LDEzLjQ0NSwwLDAsMC0xNi43ODEtLjEzMmMtLjAzNC4wMjYtLjA3Ny4wNTMtLjExLjA3OWwtMzguNjY1LDMxLjJMMjIwLjksNDQ5Ljc2MWwtLjA4NC0uMDY2YTEzLjQsMTMuNCwwLDAsMC0xNi43NCwwbC0uMDgzLjA2Ni0zOC4yMTQsMzEuMTc3LTM4LjY1NC0zMS4yLS4xLS4wOGExMy40MzksMTMuNDM5LDAsMCwwLTE2Ljc1Ni4xMTljLS4wMzguMDMxLS4xLjA2Mi0uMTMzLjA5M0w4MSw0NzQuMTU3WiIgZGF0YS1uYW1lPSImbHQ7Q29tcG91bmQgUGF0aCZndDsiLz48cGF0aCBkPSJNMTQ5LjU5IDQwNEgyNzUuM2E4IDggMCAwIDAgMC0xNkgxNDkuNTlhOCA4IDAgMCAwIDAgMTZ6TTIxMi40NCAzMTQuNzNhMjggMjggMCAwIDEtMjcuOTYtMjcuOTcgOCA4IDAgMCAwLTE2IDBBNDQuMDM5IDQ0LjAzOSAwIDAgMCAyMDIgMzI5LjQ2N1YzNDRhOCA4IDAgMCAwIDE2IDBWMzMwLjM2NmE0My45NTkgNDMuOTU5IDAgMCAwLTUuNTYtODcuNTY2IDI3Ljk4NCAyNy45ODQgMCAwIDEtMjcuOTYtMjcuOTU1QzE4NC40OCAyMDAuMzQ1IDE5NS42NyAxODggMjEwIDE4N2gwYTcuODg3IDcuODg3IDAgMCAwIDEtLjA4NWMuNTA2LS4wMjQuOTg5LS4wNDggMS40MzgtLjA0OGEyOCAyOCAwIDAgMSAyNy45NyAyNy45NjcgOCA4IDAgMCAwIDE2IDBBNDQuMDI3IDQ0LjAyNyAwIDAgMCAyMTggMTcxLjIyNFYxNTlhOCA4IDAgMCAwLTE2IDB2MTMuMTI1QTQzLjk2NyA0My45NjcgMCAwIDAgMjEyLjQ0IDI1OC44YTI3Ljk2NSAyNy45NjUgMCAxIDEgMCA1NS45M3oiIGRhdGEtbmFtZT0iJmx0O1BhdGgmZ3Q7Ii8+PC9nPjwvZz48L2c+PC9nPjwvc3ZnPg=="
+  />
+  <span>Payroll Application</span>
+  <div class="spacer"></div>
+  <a aria-label="Angular on twitter" target="_blank" rel="noopener" href="https://twitter.com/angular" title="Twitter">
+
+
+  </a>
+
+
+</div>
+
+<div class="content" role="main">
+
+  <router-outlet></router-outlet>
+  <footer>
+
+    <div> Testing ...</div>
+  </footer>
+
+
+
+</div>
+
+
+
+

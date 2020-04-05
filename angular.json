@@ -1,0 +1,335 @@
+{
+  "$schema": "./node_modules/@angular/cli/lib/config/schema.json",
+  "version": 1,
+  "newProjectRoot": "projects",
+  "projects": {
+    "administration": {
+      "projectType": "application",
+      "schematics": {
+        "@ngrx/schematics:component": {
+          "style": "scss"
+        }
+      },
+      "root": "projects/administration",
+      "sourceRoot": "projects/administration/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/administration",
+            "index": "projects/administration/src/index.html",
+            "main": "projects/administration/src/main.ts",
+            "polyfills": "projects/administration/src/polyfills.ts",
+            "tsConfig": "projects/administration/tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "projects/administration/src/favicon.ico",
+              "projects/administration/src/assets"
+            ],
+            "styles": [
+              "projects/administration/src/styles.scss"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/administration/src/environments/environment.ts",
+                  "with": "projects/administration/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "administration:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "administration:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "administration:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/administration/src/test.ts",
+            "polyfills": "projects/administration/src/polyfills.ts",
+            "tsConfig": "projects/administration/tsconfig.spec.json",
+            "karmaConfig": "projects/administration/karma.conf.js",
+            "assets": [
+              "projects/administration/src/favicon.ico",
+              "projects/administration/src/assets"
+            ],
+            "styles": [
+              "projects/administration/src/styles.scss"
+            ],
+            "scripts": []
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/administration/tsconfig.app.json",
+              "projects/administration/tsconfig.spec.json",
+              "projects/administration/e2e/tsconfig.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        },
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "projects/administration/e2e/protractor.conf.js",
+            "devServerTarget": "administration:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "administration:serve:production"
+            }
+          }
+        }
+      }
+    },
+    "payroll": {
+      "projectType": "application",
+      "schematics": {
+        "@ngrx/schematics:component": {
+          "style": "scss"
+        }
+      },
+      "root": "projects/payroll",
+      "sourceRoot": "projects/payroll/src",
+      "prefix": "app",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-angular:browser",
+          "options": {
+            "outputPath": "dist/payroll",
+            "index": "projects/payroll/src/index.html",
+            "main": "projects/payroll/src/main.ts",
+            "polyfills": "projects/payroll/src/polyfills.ts",
+            "tsConfig": "projects/payroll/tsconfig.app.json",
+            "aot": true,
+            "assets": [
+              "projects/payroll/src/favicon.ico",
+              "projects/payroll/src/assets"
+            ],
+            "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
+              "projects/payroll/src/styles.scss"
+            ],
+            "scripts": []
+          },
+          "configurations": {
+            "production": {
+              "fileReplacements": [
+                {
+                  "replace": "projects/payroll/src/environments/environment.ts",
+                  "with": "projects/payroll/src/environments/environment.prod.ts"
+                }
+              ],
+              "optimization": true,
+              "outputHashing": "all",
+              "sourceMap": false,
+              "extractCss": true,
+              "namedChunks": false,
+              "extractLicenses": true,
+              "vendorChunk": false,
+              "buildOptimizer": true,
+              "budgets": [
+                {
+                  "type": "initial",
+                  "maximumWarning": "2mb",
+                  "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb",
+                  "maximumError": "10kb"
+                }
+              ]
+            }
+          }
+        },
+        "serve": {
+          "builder": "@angular-devkit/build-angular:dev-server",
+          "options": {
+            "browserTarget": "payroll:build"
+          },
+          "configurations": {
+            "production": {
+              "browserTarget": "payroll:build:production"
+            }
+          }
+        },
+        "extract-i18n": {
+          "builder": "@angular-devkit/build-angular:extract-i18n",
+          "options": {
+            "browserTarget": "payroll:build"
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/payroll/src/test.ts",
+            "polyfills": "projects/payroll/src/polyfills.ts",
+            "tsConfig": "projects/payroll/tsconfig.spec.json",
+            "karmaConfig": "projects/payroll/karma.conf.js",
+            "assets": [
+              "projects/payroll/src/favicon.ico",
+              "projects/payroll/src/assets"
+            ],
+            "styles": [
+              "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
+              "projects/payroll/src/styles.scss"
+            ],
+            "scripts": []
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/payroll/tsconfig.app.json",
+              "projects/payroll/tsconfig.spec.json",
+              "projects/payroll/e2e/tsconfig.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        },
+        "e2e": {
+          "builder": "@angular-devkit/build-angular:protractor",
+          "options": {
+            "protractorConfig": "projects/payroll/e2e/protractor.conf.js",
+            "devServerTarget": "payroll:serve"
+          },
+          "configurations": {
+            "production": {
+              "devServerTarget": "payroll:serve:production"
+            }
+          }
+        }
+      }
+    },
+    "tools": {
+      "projectType": "library",
+      "root": "projects/tools",
+      "sourceRoot": "projects/tools/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/tools/tsconfig.lib.json",
+            "project": "projects/tools/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/tools/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/tools/src/test.ts",
+            "tsConfig": "projects/tools/tsconfig.spec.json",
+            "karmaConfig": "projects/tools/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/tools/tsconfig.lib.json",
+              "projects/tools/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    },
+    "vendors": {
+      "projectType": "library",
+      "root": "projects/vendors",
+      "sourceRoot": "projects/vendors/src",
+      "prefix": "lib",
+      "architect": {
+        "build": {
+          "builder": "@angular-devkit/build-ng-packagr:build",
+          "options": {
+            "tsConfig": "projects/vendors/tsconfig.lib.json",
+            "project": "projects/vendors/ng-package.json"
+          },
+          "configurations": {
+            "production": {
+              "tsConfig": "projects/vendors/tsconfig.lib.prod.json"
+            }
+          }
+        },
+        "test": {
+          "builder": "@angular-devkit/build-angular:karma",
+          "options": {
+            "main": "projects/vendors/src/test.ts",
+            "tsConfig": "projects/vendors/tsconfig.spec.json",
+            "karmaConfig": "projects/vendors/karma.conf.js"
+          }
+        },
+        "lint": {
+          "builder": "@angular-devkit/build-angular:tslint",
+          "options": {
+            "tsConfig": [
+              "projects/vendors/tsconfig.lib.json",
+              "projects/vendors/tsconfig.spec.json"
+            ],
+            "exclude": [
+              "**/node_modules/**"
+            ]
+          }
+        }
+      }
+    }
+  },
+  "defaultProject": "payroll",
+  "cli": {
+    "defaultCollection": "@ngrx/schematics"
+  }
+}

@@ -1,0 +1,25 @@
+﻿{
+  "employees": [
+    {
+      "id":"1",
+      "first_name": "sam",
+      "last_name": "jackson",
+      "age": 10,
+      "is_active": true
+    },
+    {
+      "id":"2",
+      "first_name": "samsom",
+      "last_name": "thomas",
+      "age": 10,
+      "is_active": true
+    },
+    {
+      "id":"3",
+      "first_name": "michael",
+      "last_name": "jachson",
+      "age": 10,
+      "is_active": true
+    }
+  ]
+}
