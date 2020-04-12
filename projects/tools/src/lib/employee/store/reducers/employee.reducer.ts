@@ -13,10 +13,11 @@ export interface EmployeeState {
 export const initialState: EmployeeState = {
   entities: {},
   loaded: false,
-  loading: false
+  loading: false,
+  error: {}
 };
 
-export function reducer(
+export function employeeReducer(
   state = initialState,
   action: fromEmployee.EmployeeActions
 ): EmployeeState {
@@ -54,6 +55,7 @@ export function reducer(
         ...state,
         loading: false,
         loaded: false,
+        error:action.payload.error
       };
     }
 

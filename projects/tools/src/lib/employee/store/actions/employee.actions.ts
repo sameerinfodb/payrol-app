@@ -1,5 +1,6 @@
 import {Action} from '@ngrx/store';
 import {Employee} from "../../model/employee.interface";
+import {EmployeeState} from "../reducers/employee.reducer";
 
 export enum EmployeeActionTypes {
   LoadEmployees = '[Employee] Load Employees',
@@ -21,8 +22,10 @@ export class LoadEmployeesSuccess implements Action {
 
 export class LoadEmployeesFailed implements Action {
   readonly type = EmployeeActionTypes.LoadEmployeesFailed;
-  constructor(public payload:any) {
+  constructor(public payload:EmployeeState) {
   }
 }
+
+
 
 export type EmployeeActions = LoadEmployees | LoadEmployeesFailed | LoadEmployeesSuccess  ;

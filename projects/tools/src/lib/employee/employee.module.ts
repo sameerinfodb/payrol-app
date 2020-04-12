@@ -11,7 +11,7 @@ import {EmployeeFacade} from "./store/facade/employee.facade";
   declarations: [],
   imports: [
     CommonModule,
-    StoreModule.forFeature(fromEmployee.EMPLOYEE_FEATURE_KEY, fromEmployee.reducer),
+    StoreModule.forFeature(fromEmployee.EMPLOYEE_FEATURE_KEY, fromEmployee.employeeReducer),
     EffectsModule.forFeature([EmployeeEffects])
   ],
   providers:[ EmployeeFacade]
