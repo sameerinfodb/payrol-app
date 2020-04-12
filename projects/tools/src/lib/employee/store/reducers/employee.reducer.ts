@@ -1,28 +1,63 @@
+import *  as fromEmployee from '../actions/employee.actions';
+import {Employee} from '../../model/employee.interface';
 
-import { EmployeeActions, EmployeeActionTypes } from '../actions/employee.actions';
-import {Employee} from "../../model/employee.interface";
+export const EMPLOYEE_FEATURE_KEY = 'employee';
 
-export const employeeFeatureKey = 'employee';
+export interface EmployeeState {
+  entities: { [id: number]: Employee };
+  loaded: boolean;
+  loading: boolean;
+  error?: any; // last none error (if any)
+}
 
-
-
-export const initialState: Employee = {
-  "id": -1,
-  "first_name": '',
-  "last_name": '',
-  "age": -1,
-  "is_active": false
+export const initialState: EmployeeState = {
+  entities: {},
+  loaded: false,
+  loading: false
 };
 
-export function reducer(lastState = initialState, action: EmployeeActions): Employee {
+export function reducer(
+  state = initialState,
+  action: fromEmployee.EmployeeActions
+): EmployeeState {
   switch (action.type) {
-    case EmployeeActionTypes.LoadEmployees:
-      return loadEmployees(lastState, action);
-    case EmployeeActionTypes.LoadEmployeesSuccess:
-      return loadEmployees(lastState, action);
-    case EmployeeActionTypes.LoadEmployeesFailed:
-      return loadEmployees(lastState, action);
+    case fromEmployee.EmployeeActionTypes.LoadEmployees: {
+      return {
+        ...state,
+        loading: true,
+      };
+    }
+
+    case fromEmployee.EmployeeActionTypes.LoadEmployeesSuccess: {
+      const entities = action.payload.reduce(
+        (entities: { [id: number]: Employee }, employee: Employee) => {
+          return {
+            ...entities,
+            [employee.id]: employee,
+          };
+        },
+        {
+          ...state.entities,
+        }
+      );
+
+      return {
+        ...state,
+        loading: false,
+        loaded: true,
+        entities,
+      };
+    }
+
+    case fromEmployee.EmployeeActionTypes.LoadEmployeesFailed: {
+      return {
+        ...state,
+        loading: false,
+        loaded: false,
+      };
+    }
+
     default:
-      return lastState;
+      return state;
   }
 }

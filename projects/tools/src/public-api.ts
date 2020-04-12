@@ -3,5 +3,8 @@
  */
 
 
-export {EmployeeService }from "./lib/employee/service/employee.service";
+
+export * from './lib/employee/model/employee.interface';
 export * from './lib/tools.module';
+
+

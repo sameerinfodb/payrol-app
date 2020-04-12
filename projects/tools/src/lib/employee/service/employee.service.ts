@@ -1,9 +1,9 @@
-import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs';
+import {Injectable} from '@angular/core';
+import {Observable} from 'rxjs';
 
-import { HttpClient } from '@angular/common/http';
+import {HttpClient} from '@angular/common/http';
 
-import { EmployeeAdaptor } from '../adaptor/employee.adaptor';
+import {EmployeeAdaptor} from '../adaptor/employee.adaptor';
 import {Employee} from "../model/employee.interface";
 
 const employeesUrl = 'http://localhost:3000/employees';
@@ -15,6 +15,7 @@ export class EmployeeService {
   constructor(private http: HttpClient) {}
 
   getEmployee(): Observable<Employee[]> {
+    console.log('getEmployee called');
     let employeesUrlResponse = this.http.get(employeesUrl);
     return EmployeeAdaptor.getEmployees(employeesUrlResponse);
   }

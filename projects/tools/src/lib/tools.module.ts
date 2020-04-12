@@ -1,8 +1,5 @@
-import { NgModule } from '@angular/core';
+import {NgModule} from '@angular/core';
 import {HttpClientModule} from "@angular/common/http";
-import {EmployeeService} from "./employee/service/employee.service";
-
-
 
 
 @NgModule({
@@ -10,7 +7,7 @@ import {EmployeeService} from "./employee/service/employee.service";
   imports: [
     HttpClientModule
   ],
-  providers:[HttpClientModule,EmployeeService],
+  providers:[],
   exports: []
 })
 export class ToolsModule { }

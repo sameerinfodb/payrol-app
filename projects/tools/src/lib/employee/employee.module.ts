@@ -1,18 +1,19 @@
-import { NgModule } from '@angular/core';
-import { CommonModule } from '@angular/common';
-import { StoreModule } from '@ngrx/store';
+import {NgModule} from '@angular/core';
+import {CommonModule} from '@angular/common';
+import {StoreModule} from '@ngrx/store';
 import * as fromEmployee from './store/reducers/employee.reducer';
-import { EffectsModule } from '@ngrx/effects';
-import { EmployeeEffects } from './store/effects/employee.effects';
-
+import {EffectsModule} from '@ngrx/effects';
+import {EmployeeEffects} from './store/effects/employee.effects';
+import {EmployeeFacade} from "./store/facade/employee.facade";
 
 
 @NgModule({
   declarations: [],
   imports: [
     CommonModule,
-    StoreModule.forFeature(fromEmployee.employeeFeatureKey, fromEmployee.reducer),
+    StoreModule.forFeature(fromEmployee.EMPLOYEE_FEATURE_KEY, fromEmployee.reducer),
     EffectsModule.forFeature([EmployeeEffects])
-  ]
+  ],
+  providers:[ EmployeeFacade]
 })
 export class EmployeeModule { }
