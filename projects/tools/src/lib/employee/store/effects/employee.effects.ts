@@ -16,7 +16,7 @@ export class EmployeeEffects {
   loadEmployees$ = this.actions$.pipe(
     ofType(employeeActions.EmployeeActionTypes.LoadEmployees),
     switchMap(()=>{
-        return this.employeeService.getEmployee().pipe(
+        return this.employeeService.getEmployees().pipe(
           map(employee=>new employeeActions.LoadEmployeesSuccess(employee)),
           catchError(error=>of(new employeeActions.LoadEmployeesFailed(error)))
         );

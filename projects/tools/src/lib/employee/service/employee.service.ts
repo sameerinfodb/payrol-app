@@ -14,8 +14,8 @@ const employeesUrl = 'http://localhost:3000/employees';
 export class EmployeeService {
   constructor(private http: HttpClient) {}
 
-  getEmployee(): Observable<Employee[]> {
-    console.log('getEmployee called');
+  getEmployees(): Observable<Employee[]> {
+    console.log('getEmployees called');
     let employeesUrlResponse = this.http.get(employeesUrl);
     return EmployeeAdaptor.getEmployees(employeesUrlResponse);
   }

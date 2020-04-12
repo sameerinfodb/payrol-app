@@ -1,11 +1,7 @@
-import { TestBed } from '@angular/core/testing';
+import {TestBed} from '@angular/core/testing';
 
-import { EmployeeService } from './employee.service';
-import {
-  HttpClientTestingModule,
-  HttpTestingController,
-} from '@angular/common/http/testing';
-
+import {EmployeeService} from './employee.service';
+import {HttpClientTestingModule, HttpTestingController,} from '@angular/common/http/testing';
 
 
 describe('EmployeeService', () => {
@@ -48,7 +44,7 @@ describe('EmployeeService', () => {
 
   it('should return three employees', () => {
 
-    service.getEmployee().subscribe((employees) => {
+    service.getEmployees().subscribe((employees) => {
       console.log(employees);
       expect(employees.length).toBe(3);
     });
